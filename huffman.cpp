@@ -49,12 +49,13 @@ bool freqsCount(int *array, char *argv[], int argc)
     return false;
 }
 
+
 int main(int argc, char* argv[])
 {
 
 	int* charsArr = new int[maxChars];
 	
-	setTracing(argc, argv);
+	// setTracing(argc, argv);
 
 	bool ans;
 	ans = freqsCount(charsArr, argv, argc);
