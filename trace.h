@@ -11,7 +11,7 @@
 
 extern int tracelevel;
 
-// Function prototypes
+//  Function prototypes
 
 void setTracing(int argc, char** argv);
 void showFrequencies(int* arr);
