@@ -204,41 +204,43 @@ void encodeCharHelper(BFILE* write, char** code, int x)
 
 int main(int argc, char* argv[])
 {
-
+    printf("Line 207\n");
 	setTracing(argc, argv);
 	int* charsArr = new int[maxChars];
 	
-	
+	printf("Line 211\n");
 
 	bool ans;
 	ans = freqsCount(charsArr,argc, argv);
 
-	
+	printf("Line 216\n");
     if(ans)
     {
         Tree test = huffmanTree(charsArr);
-
+        printf("Line 220\n");
         char** code = new char*[maxChars];
         char* zoom = new char[3];
         char* prefix = strcat(zoom, "01");
         setArrayToNull(code);
         buildCode(test, code, prefix);
-
+        printf("Line 226\n");
         BFILE* openWriteFile = openBinaryFileWrite(argv[argc-1]);
         writeTreeBinary(openWriteFile, test);
-
+        printf("Line 229\n");
         // Add something below
         encodeChar(code, openWriteFile, argv[argc-2]);
-
+        printf("Line 232\n");
         if (tracelevel)
         {
+            printf("Line 235\n");
             showFrequencies(charsArr);
             cout << "\nThe huffman tree is as follows:" << endl;
             showTree(test);
             showCodeArray(code);
-
+            printf("Line 240\n");
             cout << "\nInput File: " << argv[argc - 2] << endl;
             cout << "File two: " << argv[argc - 1] << endl;
+            printf("Line 243");
         }
 
         closeBinaryFileWrite(openWriteFile);
