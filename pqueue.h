@@ -7,40 +7,41 @@
 // These #ifndef and #define lines make it so that, if this file is
 // read more than once by the compiler, its body is skipped on all
 // but the first time it is read.
+#ifndef pqueue_h
+#define pqueue_h
 
-#ifndef PQUEUE_H
-#define PQUEUE_H
+#include <cstdio>
+#include "tree.h"
 
-typedef const char* ItemType;
-typedef double      PriorityType;
-typedef void 	   (*ItemPrinter)(ItemType);
-typedef void 	   (*PriorityPrinter)(PriorityType);
+// Type definitions.
 
-// Forward declaration of PQCell
+typedef Tree PQItemType;
+typedef int  PQPriorityType;
+
+typedef void (ItemPrinter)(PQItemType);
+typedef void (PriorityPrinter)(PQPriorityType);
+
+// Structures.
+
 struct PQCell;
 
-// An object type PriorityQueue represents a pointer.
-// The fields are:
-//
-//	head	a pointer to to a linked list made of PQCells.
-//      
-struct PriorityQueue
-{
-	PQCell* head;
+// Structure PriorityQueue holds a pointer to the PQCell linked list.
+// By default it sets the pointer to null.
 
-	PriorityQueue()
-	{
-		head = NULL;
-	}
+struct PriorityQueue {
+    PQCell* toLinkedList; // pointer to linked list
 
+    PriorityQueue() {
+        toLinkedList = NULL;
+    }
 };
 
-// Public functions
+// Function Prototypes
 
-void remove(PriorityQueue& q, ItemType& x, PriorityType& p);
-bool isEmpty(const PriorityQueue &q);
-void insert(PriorityQueue& q, ItemType x, PriorityType p);
-void printPriorityQueue(const PriorityQueue& q, ItemPrinter pi, PriorityPrinter
-      pp);
+bool isEmpty(const PriorityQueue& q);
+void insert(PriorityQueue& q, PQItemType item, PQPriorityType pri);
+void remove(PriorityQueue& q, PQItemType& item, PQPriorityType& pri);
+void printPriorityQueue(const PriorityQueue& q, ItemPrinter pi,
+                        PriorityPrinter pp);
 
-#endif
+#endif /* pqueue_h */
