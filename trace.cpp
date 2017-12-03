@@ -36,7 +36,7 @@ int tracelevel = 0;
  * the command line.
  *
  * @param argc
- *  Position to read from in the command line.
+ *  Position to read from in the command line
  *
  * @param argv
  *  Array of strings.
